@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/skill-mine/static/css/main.9b1c3aa2.chunk.css",
+    "main.js": "/skill-mine/static/js/main.7090f0fe.chunk.js",
+    "main.js.map": "/skill-mine/static/js/main.7090f0fe.chunk.js.map",
+    "runtime-main.js": "/skill-mine/static/js/runtime-main.bfcff294.js",
+    "runtime-main.js.map": "/skill-mine/static/js/runtime-main.bfcff294.js.map",
+    "static/js/2.0dd69c53.chunk.js": "/skill-mine/static/js/2.0dd69c53.chunk.js",
+    "static/js/2.0dd69c53.chunk.js.map": "/skill-mine/static/js/2.0dd69c53.chunk.js.map",
+    "static/js/3.0774e55b.chunk.js": "/skill-mine/static/js/3.0774e55b.chunk.js",
+    "static/js/3.0774e55b.chunk.js.map": "/skill-mine/static/js/3.0774e55b.chunk.js.map",
+    "index.html": "/skill-mine/index.html",
+    "static/css/main.9b1c3aa2.chunk.css.map": "/skill-mine/static/css/main.9b1c3aa2.chunk.css.map",
+    "static/js/2.0dd69c53.chunk.js.LICENSE.txt": "/skill-mine/static/js/2.0dd69c53.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bfcff294.js",
+    "static/js/2.0dd69c53.chunk.js",
+    "static/css/main.9b1c3aa2.chunk.css",
+    "static/js/main.7090f0fe.chunk.js"
+  ]
+}
