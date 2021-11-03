@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Paper } from '@mui/material';
 import Button from '@mui/material/Button';
+import BasicBreadcrumbs from './BasicBreadcrumbs'
 
 import { resolveResponse } from "../utils/ResponseHandler";
 class ProductCategory extends Component {
@@ -23,6 +24,7 @@ class ProductCategory extends Component {
         
        let queryStr =  window.location.href.split('?')[1] && window.location.href.split('?')[1].split('=')[1]; 
        this.setState({categoryName: decodeURIComponent(queryStr)})
+    
         UserService.getProductCategory(queryStr)
             .then((res) => {
                 //   let data = resolveResponse(res); //common response handler
@@ -51,7 +53,12 @@ class ProductCategory extends Component {
                         <Typography variant="h5" component="p" >
                            {this.capitalizeFirstLetter(this.state.categoryName)} 
                         </Typography>
+
+                        <BasicBreadcrumbs/>
                     </Grid>
+
+                   
+
 
                     {this.state.ProductCategory && this.state.ProductCategory.map(row => (
                         <Grid item xs={12} sm={3} style={{ textAlign: "center" }}>

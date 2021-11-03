@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import './ProductStyle.css';
 import Button from '@mui/material/Button';
 import Notify from '../utils/Notify'
+import BasicBreadcrumbs from './BasicBreadcrumbs'
 
 import { resolveResponse } from "../utils/ResponseHandler";
 class ProductDetails extends Component {
@@ -87,12 +88,17 @@ class ProductDetails extends Component {
 
                 {this.state.waitingFlag ? <CircularProgress style={{ padding: "25px" }} /> : <Grid direction="row" container spacing={5} style={{ padding: "20px" }}>
 
+                <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
+                <BasicBreadcrumbs />
+                    </Grid>
+                  
 
                     <Grid item xs={12} sm={6} style={{ textAlign: "center" }}>
                         <Paper style={{ textAlign: "center", cursor: 'pointer', padding: "10px" }} >
                             <img style={{ width: "50%", height: "400px" }} src={productDetails.image} /> <br />
                             {productDetails.title}
                         </Paper>
+                       
                     </Grid>
 
                     <Grid item xs={12} sm={6} style={{ textAlign: "left" }}>
