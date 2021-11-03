@@ -18,6 +18,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import AppleIcon from '@mui/icons-material/Apple';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 import Autocomplete from '@mui/material/Autocomplete';
 
 const Search = styled('div')(({ theme }) => ({
@@ -60,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -80,9 +82,24 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
+  const showCart =()=>{
+    //console.log('proops', props)
+    //props.history.push('/homepage');
+    window.location.replace('#/cart')
+  }
+
+  const gotoHomepage =()=>{
+    //console.log('proops', props)
+    //props.history.push('/homepage');
+    window.location.replace('#/homepage')
+  }
+
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  let cartList = localStorage.getItem('cartList') ? JSON.parse(localStorage.getItem('cartList')) : []; 
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -130,7 +147,7 @@ export default function PrimarySearchAppBar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={props.totalItem || cartList.length} color="error">
           <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -190,7 +207,7 @@ const randamData = [
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <AppleIcon fontSize="large"/>
+           <AppleIcon fontSize="large" onClick={gotoHomepage} />
           </Typography>
           <Search>
 
@@ -221,10 +238,12 @@ const randamData = [
               size="large"
               aria-label="Added product"
               color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <ShoppingCartIcon />
-              </Badge>
+             >
+
+            <Badge onClick={showCart} badgeContent={props.totalItem || cartList.length} color="error">
+              <ShoppingCartIcon />
+            </Badge>
+          
             </IconButton>
             <IconButton
               size="large"

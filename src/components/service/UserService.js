@@ -9,11 +9,13 @@ class UserService {
           return axios.get(apiConstant.CATEGORIES_API, AuthService.getHeader());
     }
 
-
-    getCategoryProduct(queryStr) {
+    getProductCategory(queryStr) {
         return axios.get(apiConstant.CATEGORY_PRODUCT_API+queryStr, AuthService.getHeader());
    }
 
+   getProductDetails(productId) {
+    return axios.get(apiConstant.PRODUCT_DETAILS_API+productId, AuthService.getHeader());
+   }
    
 
 } 

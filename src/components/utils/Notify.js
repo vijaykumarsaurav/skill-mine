@@ -7,6 +7,7 @@ class Notify {
     }
 
     showSuccess(msg) {
+        console.log(msg); 
         toast.success(msg , this.options());
     }
 

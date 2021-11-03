@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.MuiAutocomplete-input {
+  padding: 0.5px 10px 14.5px 0px !important;
+}
+
+.MuiAutocomplete-inputRoot{
+  height: 40px;
+}
+
+

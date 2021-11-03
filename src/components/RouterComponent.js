@@ -1,7 +1,9 @@
 import { HashRouter as Router, Route, Switch} from 'react-router-dom'
 import React from "react";
-import Homepage from './Homepage';
-import CategoryProduct from './CategoryProduct';
+import Homepage from './searchAndBrowse/Homepage';
+import ProductCategory from './searchAndBrowse/ProductCategory';
+import ProductDetails from './searchAndBrowse/ProductDetails';
+import CartList from './searchAndBrowse/CartList';
 
 
 const AppRouter = () => {
@@ -11,10 +13,12 @@ const AppRouter = () => {
             <Router>
                 <Switch>
                     <Route path="/" exact component={Homepage}/>
-                    <Route path="/category-product" component={CategoryProduct}/>
-                 
+                    <Route path="/product-category" component={ProductCategory}/>
+                    <Route path="/product-details" component={ProductDetails}/>
+                    <Route path="/cart" component={CartList}/>
+
                     <Route path="*" component={Homepage} />
-                    
+                     
                 </Switch>
             </Router>
         </React.Fragment>
