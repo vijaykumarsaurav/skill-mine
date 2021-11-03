@@ -19,9 +19,9 @@ class ProductDetails extends Component {
             title: '',
             productDetails: "",
             waitingFlag: true,
-            quantity: 1, 
-            message: "", 
-            totalItemIntoCart:0
+            quantity: 1,
+            message: "",
+            totalItemIntoCart: 0
         }
     }
 
@@ -45,30 +45,30 @@ class ProductDetails extends Component {
     }
 
     addToCart = (productDetails) => {
-       let cartList = localStorage.getItem('cartList') ? JSON.parse(localStorage.getItem('cartList')) : []; 
-       console.log("cartList",cartList);
-        let cartMsg=''; 
-       let isProductAlreadyAdded = cartList.filter((item)=>item.productId == productDetails.id); 
-       if(isProductAlreadyAdded.length === 0){
-        cartList.push({
-            productId: productDetails.id, 
-            price: productDetails.price, 
-            title:productDetails.title, 
-            image:productDetails.image, 
-            quantity: parseInt(this.state.quantity)  
-        })
-        cartMsg = `${this.state.quantity} ${this.state.quantity >1 ? "same items added" : "item added"}`; 
-       }else{
-         isProductAlreadyAdded[0].quantity = parseInt(isProductAlreadyAdded[0].quantity) +  parseInt(this.state.quantity); 
-         cartMsg = `${isProductAlreadyAdded[0].quantity} same items added`; 
-       }
+        let cartList = localStorage.getItem('cartList') ? JSON.parse(localStorage.getItem('cartList')) : [];
+        console.log("cartList", cartList);
+        let cartMsg = '';
+        let isProductAlreadyAdded = cartList.filter((item) => item.productId == productDetails.id);
+        if (isProductAlreadyAdded.length === 0) {
+            cartList.push({
+                productId: productDetails.id,
+                price: productDetails.price,
+                title: productDetails.title,
+                image: productDetails.image,
+                quantity: parseInt(this.state.quantity)
+            })
+            cartMsg = `${this.state.quantity} ${this.state.quantity > 1 ? "same items added" : "item added"}`;
+        } else {
+            isProductAlreadyAdded[0].quantity = parseInt(isProductAlreadyAdded[0].quantity) + parseInt(this.state.quantity);
+            cartMsg = `${isProductAlreadyAdded[0].quantity} same items added`;
+        }
 
-       this.setState({message : cartMsg,  totalItemIntoCart:cartList.length}); 
-    //    setTimeout(() => {
-    //     this.setState({message : ''}); 
-    //    }, 5000);
-     //  Notify.showSuccess(msg);
-       localStorage.setItem('cartList', JSON.stringify(cartList)); 
+        this.setState({ message: cartMsg, totalItemIntoCart: cartList.length });
+        //    setTimeout(() => {
+        //     this.setState({message : ''}); 
+        //    }, 5000);
+        //  Notify.showSuccess(msg);
+        localStorage.setItem('cartList', JSON.stringify(cartList));
     }
 
     quantityChange = (e) => {
@@ -84,21 +84,21 @@ class ProductDetails extends Component {
 
         return (
             <React.Fragment>
-                <HeaderNavbar totalItem={this.state.totalItemIntoCart}/>
+                <HeaderNavbar totalItem={this.state.totalItemIntoCart} />
 
                 {this.state.waitingFlag ? <CircularProgress style={{ padding: "25px" }} /> : <Grid direction="row" container spacing={5} style={{ padding: "20px" }}>
 
-                <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
-                <BasicBreadcrumbs />
+                    <Grid item xs={12} sm={12} style={{ textAlign: "center" }}>
+                        <BasicBreadcrumbs />
                     </Grid>
-                  
+
 
                     <Grid item xs={12} sm={6} style={{ textAlign: "center" }}>
                         <Paper style={{ textAlign: "center", cursor: 'pointer', padding: "10px" }} >
                             <img style={{ width: "50%", height: "400px" }} src={productDetails.image} /> <br />
                             {productDetails.title}
                         </Paper>
-                       
+
                     </Grid>
 
                     <Grid item xs={12} sm={6} style={{ textAlign: "left" }}>

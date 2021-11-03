@@ -16,25 +16,25 @@ class CartDetails extends Component {
 
         this.state = {
             categoryName: '',
-            quantity:0,
+            quantity: 0,
             cartList: localStorage.getItem('cartList') ? JSON.parse(localStorage.getItem('cartList')) : [],
-            totalPrice:0
+            totalPrice: 0
         }
     }
 
-    updateTotalPrice =()=>{
-        let sum = 0; 
+    updateTotalPrice = () => {
+        let sum = 0;
         this.state.cartList.forEach(element => {
-            sum += element.quantity * element.price; 
+            sum += element.quantity * element.price;
         });
 
-        this.setState({totalPrice : sum})
+        this.setState({ totalPrice: sum })
     }
 
     componentDidMount() {
-       
-        this.updateTotalPrice(); 
-        
+
+        this.updateTotalPrice();
+
     }
 
     handleClick = (productId) => {
@@ -45,39 +45,39 @@ class CartDetails extends Component {
     capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    updateQty=(row, num)=>{
-         //row.quantity = row.quantity + num; 
-        
-         let tempList = this.state.cartList; 
-         tempList.forEach(element => {
-            if(element.productId == row.productId){
-                element.quantity = row.quantity + num; 
-            }
-         });
+    updateQty = (row, num) => {
+        //row.quantity = row.quantity + num; 
 
-         localStorage.setItem('cartList', JSON.stringify(tempList)); 
-         this.setState({cartList : tempList},function(){
-            this.updateTotalPrice(); 
-         })
+        let tempList = this.state.cartList;
+        tempList.forEach(element => {
+            if (element.productId == row.productId) {
+                element.quantity = row.quantity + num;
+            }
+        });
+
+        localStorage.setItem('cartList', JSON.stringify(tempList));
+        this.setState({ cartList: tempList }, function () {
+            this.updateTotalPrice();
+        })
     }
     removeQty = (row) => {
-  
-        let tempList = this.state.cartList; 
-        
-        let index =''; 
-        tempList.forEach((element,i) => {
-           if(element.productId == row.productId){
-            index  = i
-            return
-           }
+
+        let tempList = this.state.cartList;
+
+        let index = '';
+        tempList.forEach((element, i) => {
+            if (element.productId == row.productId) {
+                index = i
+                return
+            }
         });
         tempList.splice(index, 1);
 
-        localStorage.setItem('cartList', JSON.stringify(tempList)); 
-        this.setState({cartList : tempList},function(){
-           this.updateTotalPrice(); 
+        localStorage.setItem('cartList', JSON.stringify(tempList));
+        this.setState({ cartList: tempList }, function () {
+            this.updateTotalPrice();
         })
-       
+
         console.log(row)
 
     }
@@ -107,14 +107,14 @@ class CartDetails extends Component {
                                     <Grid item xs={12} sm={8} >
                                         {row.title} <br /> &#8377; {row.price * row.quantity}
                                         <br /> <br />
-                                        <Button variant="contained" onClick={()=>this.updateQty(row, 1)}> <AddIcon /> </Button>   
-                                        
+                                        <Button variant="contained" onClick={() => this.updateQty(row, 1)}> <AddIcon /> </Button>
+
                                         <span> Qty <b> {row.quantity} </b> </span>
-                                    
-                                        <Button variant="contained" onClick={()=>this.updateQty(row,-1)}> <RemoveIcon /> </Button> 
+
+                                        <Button variant="contained" onClick={() => this.updateQty(row, -1)}> <RemoveIcon /> </Button>
 
                                         &nbsp;&nbsp;
-                                        <Button  onClick={()=>this.removeQty(row)}> Remove </Button> 
+                                        <Button onClick={() => this.removeQty(row)}> Remove </Button>
                                     </Grid>
                                 </Grid>
                             </Paper>
@@ -123,38 +123,38 @@ class CartDetails extends Component {
                     ))}
 
                     <Grid item xs={12} sm={4}>
-                          
-                            <Grid direction="row" style={{ padding: "10px" }}>
 
-                                    <Grid item xs={12} sm={12} style={{justifyContent:"space-between"}} >
-                                    <Typography variant="h6" component="p" >
-                                    PRICE DETAILS 
-                                    </Typography>
+                        <Grid direction="row" style={{ padding: "10px" }}>
 
-                                    <Typography variant="h6" component="p" >
-                                        Total ({this.state.cartList.length}Item)   : {this.state.totalPrice}
-                                    </Typography>
+                            <Grid item xs={12} sm={12} style={{ justifyContent: "space-between" }} >
+                                <Typography variant="h6" component="p" >
+                                    PRICE DETAILS
+                                </Typography>
 
-                                    <Typography variant="h6" component="p" >
+                                <Typography variant="h6" component="p" >
+                                    Total ({this.state.cartList.length}Item)   : {this.state.totalPrice}
+                                </Typography>
+
+                                <Typography variant="h6" component="p" >
                                     Discount
-                                    </Typography>
-                                    <Typography variant="h6" component="p" >
+                                </Typography>
+                                <Typography variant="h6" component="p" >
                                     Delivery Charges
 
-                                    </Typography>
+                                </Typography>
 
-                                    <Typography variant="h6" component="p" >
+                                <Typography variant="h6" component="p" >
                                     <b>  Total Amount:  {this.state.totalPrice} </b>
 
-                                    </Typography>
+                                </Typography>
 
-                                
 
-                                    
 
-                                </Grid>
+
 
                             </Grid>
+
+                        </Grid>
                     </Grid>
 
                 </Grid>

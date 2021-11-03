@@ -12,8 +12,8 @@ class Homepage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { 
-            categoryList: [], 
+        this.state = {
+            categoryList: [],
             categoryWaitingFlag: true
         }
     }
@@ -24,20 +24,20 @@ class Homepage extends Component {
             .then((res) => {
                 //   let data = resolveResponse(res); //common response handler
                 if (res && res.data) {
-                    this.setState({ categoryList: res.data , categoryWaitingFlag:false})
+                    this.setState({ categoryList: res.data, categoryWaitingFlag: false })
                 }
             });
     }
 
-    handleClick =(row)=>{
+    handleClick = (row) => {
         console.log(row)
-        this.props.history.push('/product-category?q='+row);
+        this.props.history.push('/product-category?q=' + row);
     }
 
-    capitalizeFirstLetter =(string) => {
+    capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    
+
     render() {
         return (
             <React.Fragment>
@@ -53,14 +53,14 @@ class Homepage extends Component {
 
                     {this.state.categoryList && this.state.categoryList.map(row => (
                         <Grid key={row} item xs={12} sm={3} style={{ textAlign: "center" }}>
-                            <div onClick={()=> this.handleClick(row)} style={{ textAlign: "center", cursor:'pointer' }} > 
+                            <div onClick={() => this.handleClick(row)} style={{ textAlign: "center", cursor: 'pointer' }} >
                                 <img src="https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png" /> <br />
                                 {this.capitalizeFirstLetter(row)}
                             </div>
                         </Grid>
-                    ))}  
+                    ))}
 
-                    {this.state.categoryWaitingFlag ? <CircularProgress  style={{padding:"25px"}}  /> : ""}
+                    {this.state.categoryWaitingFlag ? <CircularProgress style={{ padding: "25px" }} /> : ""}
                 </Grid>
 
 
@@ -75,14 +75,14 @@ class Homepage extends Component {
 
                     {this.state.categoryList && this.state.categoryList.map(row => (
                         <Grid key={row} item xs={12} sm={3} style={{ textAlign: "center" }}>
-                            <div onClick={()=> this.handleClick(row)} style={{ textAlign: "center", cursor:'pointer' }} > 
+                            <div onClick={() => this.handleClick(row)} style={{ textAlign: "center", cursor: 'pointer' }} >
                                 <img src="https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png" /> <br />
                                 {this.capitalizeFirstLetter(row)}
                             </div>
                         </Grid>
-                    ))}  
+                    ))}
 
-                    {this.state.categoryWaitingFlag ? <CircularProgress  style={{padding:"25px"}}  /> : ""}
+                    {this.state.categoryWaitingFlag ? <CircularProgress style={{ padding: "25px" }} /> : ""}
                 </Grid>
 
 
