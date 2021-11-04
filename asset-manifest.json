@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/skill-mine/static/css/main.9b1c3aa2.chunk.css",
-    "main.js": "/skill-mine/static/js/main.7090f0fe.chunk.js",
-    "main.js.map": "/skill-mine/static/js/main.7090f0fe.chunk.js.map",
+    "main.js": "/skill-mine/static/js/main.930f3521.chunk.js",
+    "main.js.map": "/skill-mine/static/js/main.930f3521.chunk.js.map",
     "runtime-main.js": "/skill-mine/static/js/runtime-main.bfcff294.js",
     "runtime-main.js.map": "/skill-mine/static/js/runtime-main.bfcff294.js.map",
     "static/js/2.0dd69c53.chunk.js": "/skill-mine/static/js/2.0dd69c53.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.bfcff294.js",
     "static/js/2.0dd69c53.chunk.js",
     "static/css/main.9b1c3aa2.chunk.css",
-    "static/js/main.7090f0fe.chunk.js"
+    "static/js/main.930f3521.chunk.js"
   ]
 }
